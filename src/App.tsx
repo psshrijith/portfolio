@@ -28,12 +28,24 @@ function App() {
             <section id="about" className="p-10 max-w-3xl mx-auto">
                 <h3 className="text-3xl font-semibold mb-4">About Me</h3>
                 <p className="mb-4">
-                    I am an engineer transitioning from QA to frontend development. I enjoy learning
-                    JavaScript, TypeScript,React, Redux-Saga, and building interactive UIs.
+                    My journey as an engineer hasn’t been conventional. In my first year of engineering,
+                    I had very little interest in coding and struggled to understand the concepts. I even
+                    disliked programming at first.
+                </p>
+                <p className="mb-4">
+                    Over the years, my curiosity and persistence grew. By the final year, I began exploring
+                    automation and testing, which led me to a QA Engineer role. During this time, I learned
+                    tools like Selenium, Cypress, and Playwright, building practical skills in automation.
+                </p>
+                <p className="mb-4">
+                    Today, I’m diving into frontend development with React and Tailwind CSS, combining my
+                    attention to detail from QA with a passion for building interactive and clean UIs.
+                    Every project is a step toward mastering modern web development and creating practical,
+                    user-friendly applications.
                 </p>
                 <p>
-                    Currently exploring modern frontend stacks, improving performance, and creating
-                    projects to showcase my skills.
+                    My experience from struggling in my early years to learning QA and now exploring frontend development -
+                    has taught me resilience, continuous learning, and the value of hands-on practice.
                 </p>
             </section>
 
