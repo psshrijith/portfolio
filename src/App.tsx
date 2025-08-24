@@ -27,7 +27,7 @@ function App() {
         <div
             className={`min-h-screen text-white font-sans transition-all duration-1000 bg-gradient-to-r ${bg}`}
         >
-            {/* Navbar */}
+
             <header className="flex justify-between items-center p-6 bg-white/80 text-gray-900 sticky top-0 z-50 backdrop-blur-md">
                 <h1 className="text-xl font-bold">Shrijith</h1>
                 <nav className="space-x-4">
@@ -38,7 +38,6 @@ function App() {
                 </nav>
             </header>
 
-            {/* Hero Section */}
             <section className="flex flex-col items-center justify-center text-center py-20">
                 <img
                     src={profilePic}
@@ -51,7 +50,6 @@ function App() {
                 </p>
             </section>
 
-            {/* About Section */}
             <section id="about" className="p-10 max-w-3xl mx-auto bg-white/20 rounded-lg backdrop-blur-md mb-10">
                 <h3 className="text-3xl font-semibold mb-4 text-gray-900">About Me</h3>
                 <p className="mb-4 text-gray-900">
@@ -69,12 +67,10 @@ function App() {
                     far from a master, but every project helps me improve and understand the craft better.
                 </p>
                 <p className="text-gray-900">
-                    My experience — from struggling in the early years to learning QA and now frontend development —
-                    has taught me resilience, patience, and the value of continuous learning.
+                    My experience from struggling in the early years to learning QA and now frontend development has taught me resilience, patience, and the value of continuous learning.
                 </p>
             </section>
 
-            {/* Skills Section */}
             <section id="skills" className="p-10 mb-10">
                 <h3 className="text-3xl font-semibold mb-6 text-center text-white">Skills</h3>
                 <div className="flex flex-wrap justify-center gap-4">
@@ -109,7 +105,6 @@ function App() {
                 </div>
             </section>
 
-            {/* Contact Section */}
             <section id="contact" className="p-10 text-center mb-10">
                 <h3 className="text-3xl font-semibold mb-4 text-white">Contact Me</h3>
                 <p className="mb-2">
@@ -132,7 +127,6 @@ function App() {
                 </p>
             </section>
 
-            {/* Footer */}
             <footer className="text-center py-6 bg-white/50 text-gray-900 backdrop-blur-md">
                 © {new Date().getFullYear()} Shrijith. All rights reserved.
             </footer>
