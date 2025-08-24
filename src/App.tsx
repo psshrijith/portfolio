@@ -49,8 +49,8 @@ function App() {
             <section id="contact" className="p-10 text-center">
                 <h3 className="text-2xl font-semibold mb-4">Contact</h3>
                 <p>
-                    Email: <a href="mailto:shrijith@example.com" className="text-blue-600">
-                    shrijith@example.com
+                    Email: <a href="mailto:shrijithps89@gmail.com" className="text-blue-600">
+                    shrijithps89@gmail.com
                 </a>
                 </p>
             </section>
