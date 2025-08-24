@@ -1,11 +1,11 @@
 import "./index.css";
+import profilePic from "./assets/shrijith.jpg";
 
 function App() {
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-900">
-            {/* Navbar */}
-            <header className="flex justify-between items-center p-6 bg-white shadow-md">
-                <h1 className="text-xl font-bold">My Portfolio</h1>
+        <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+            <header className="flex justify-between items-center p-6 bg-white shadow-md sticky top-0 z-50">
+                <h1 className="text-xl font-bold">Shrijith</h1>
                 <nav className="space-x-4">
                     <a href="#about" className="hover:text-blue-600">About</a>
                     <a href="#projects" className="hover:text-blue-600">Projects</a>
@@ -13,45 +13,91 @@ function App() {
                 </nav>
             </header>
 
-            {/* Hero */}
             <section className="flex flex-col items-center justify-center text-center py-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
-                <h2 className="text-4xl font-bold mb-4">Hi, I'm Shrijith 👋</h2>
-                <p className="max-w-xl">
-                    A frontend developer passionate about React and building clean UIs.
+                <img
+                    src={profilePic}
+                    alt="Shrijith"
+                    className="w-40 h-40 rounded-full border-4 border-white mb-6 object-cover"
+                />
+                <h2 className="text-4xl font-bold mb-2">Hi, I'm Shrijith 👋</h2>
+                <p className="text-xl max-w-xl">
+                    Frontend developer | React enthusiast | QA Engineer.
                 </p>
             </section>
 
-            {/* About */}
             <section id="about" className="p-10 max-w-3xl mx-auto">
-                <h3 className="text-2xl font-semibold mb-4">About Me</h3>
+                <h3 className="text-3xl font-semibold mb-4">About Me</h3>
+                <p className="mb-4">
+                    I am an engineer transitioning from QA to frontend development. I enjoy learning
+                    JavaScript, React, Redux-Saga, and building interactive UIs.
+                </p>
                 <p>
-                    I'm an engineer transitioning from QA to frontend development.
-                    I enjoy learning JavaScript, React, and experimenting with design systems.
+                    Currently exploring modern frontend stacks, improving performance, and creating
+                    projects to showcase my skills.
                 </p>
             </section>
 
-            {/* Projects */}
-            <section id="projects" className="p-10 bg-gray-100">
-                <h3 className="text-2xl font-semibold mb-6 text-center">Projects</h3>
+            <section id="skills" className="p-10 bg-gray-100">
+                <h3 className="text-3xl font-semibold mb-6 text-center">Skills</h3>
+                <div className="flex flex-wrap justify-center gap-4">
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">JavaScript</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">React</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Tailwind CSS</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Redux-Saga</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Git & GitHub</span>
+                </div>
+            </section>
+
+            <section id="projects" className="p-10 max-w-5xl mx-auto">
+                <h3 className="text-3xl font-semibold mb-6 text-center">Projects</h3>
                 <div className="grid md:grid-cols-2 gap-6">
-                    <div className="p-6 bg-white rounded-xl shadow-md">
-                        <h4 className="font-bold text-lg">YouTube Clone</h4>
-                        <p className="text-sm mt-2">A simple clone UI built with React + Tailwind.</p>
+                    <div className="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                        <h4 className="font-bold text-lg mb-2">YouTube Clone</h4>
+                        <p className="text-sm mb-2">
+                            A React + Tailwind clone of YouTube UI for practice.
+                        </p>
+                        <a
+                            href="#"
+                            className="text-blue-600 hover:underline"
+                        >
+                            View Project
+                        </a>
                     </div>
-                    <div className="p-6 bg-white rounded-xl shadow-md">
-                        <h4 className="font-bold text-lg">Color Box App</h4>
-                        <p className="text-sm mt-2">A React app exploring useState and props.</p>
+
+                    <div className="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition">
+                        <h4 className="font-bold text-lg mb-2">Color Box App</h4>
+                        <p className="text-sm mb-2">
+                            A React project exploring useState, props, and dynamic styling.
+                        </p>
+                        <a
+                            href="#"
+                            className="text-blue-600 hover:underline"
+                        >
+                            View Project
+                        </a>
                     </div>
                 </div>
             </section>
 
-            {/* Contact */}
             <section id="contact" className="p-10 text-center">
-                <h3 className="text-2xl font-semibold mb-4">Contact</h3>
+                <h3 className="text-3xl font-semibold mb-4">Contact Me</h3>
+                <p className="mb-2">
+                    Email:{" "}
+                    <a href="mailto:shrijithps89@gmail.com" className="text-blue-600">
+                        shrijithps89@gmail.com
+                    </a>
+                </p>
+                <p className="mb-2">
+                    GitHub:{" "}
+                    <a href="https://github.com/shrijithps" className="text-blue-600">
+                        shrijithps
+                    </a>
+                </p>
                 <p>
-                    Email: <a href="mailto:shrijithps89@gmail.com" className="text-blue-600">
-                    shrijithps89@gmail.com
-                </a>
+                    LinkedIn:{" "}
+                    <a href="https://www.linkedin.com/in/shrijithps" className="text-blue-600">
+                        shrijithps
+                    </a>
                 </p>
             </section>
 
