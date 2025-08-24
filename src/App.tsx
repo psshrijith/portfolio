@@ -21,7 +21,7 @@ function App() {
                 />
                 <h2 className="text-4xl font-bold mb-2">Hi, I'm Shrijith 👋</h2>
                 <p className="text-xl max-w-xl">
-                    Frontend developer | React enthusiast | QA Engineer.
+                    Frontend Developer | React Enthusiast | QA Engineer.
                 </p>
             </section>
 
@@ -29,7 +29,7 @@ function App() {
                 <h3 className="text-3xl font-semibold mb-4">About Me</h3>
                 <p className="mb-4">
                     I am an engineer transitioning from QA to frontend development. I enjoy learning
-                    JavaScript, React, Redux-Saga, and building interactive UIs.
+                    JavaScript, TypeScript,React, Redux-Saga, and building interactive UIs.
                 </p>
                 <p>
                     Currently exploring modern frontend stacks, improving performance, and creating
@@ -41,10 +41,17 @@ function App() {
                 <h3 className="text-3xl font-semibold mb-6 text-center">Skills</h3>
                 <div className="flex flex-wrap justify-center gap-4">
                     <span className="px-4 py-2 bg-white rounded-lg shadow-sm">JavaScript</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">TypeScript</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Core Java</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Python</span>
                     <span className="px-4 py-2 bg-white rounded-lg shadow-sm">React</span>
                     <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Tailwind CSS</span>
-                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Redux-Saga</span>
                     <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Git & GitHub</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Selenium</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Cypress</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">Playwright</span>
+                    <span className="px-4 py-2 bg-white rounded-lg shadow-sm">TestNG</span>
+
                 </div>
             </section>
 
@@ -57,7 +64,7 @@ function App() {
                             A React + Tailwind clone of YouTube UI for practice.
                         </p>
                         <a
-                            href="#"
+                            href="https://github.com/shrijithps/youtubeCloneApp"
                             className="text-blue-600 hover:underline"
                         >
                             View Project
