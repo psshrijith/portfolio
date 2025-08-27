@@ -1,31 +1,10 @@
-import { useState, useEffect } from "react";
 import profilePic from "./assets/shrijith.jpg"; // replace with your photo
 
 function App() {
-    const colors = [
-        "from-blue-400 via-indigo-500 to-purple-600",
-        "from-pink-400 via-red-500 to-yellow-500",
-        "from-green-400 via-teal-500 to-cyan-500",
-        "from-orange-400 via-pink-500 to-purple-600",
-    ];
-
-    const [bg, setBg] = useState(colors[0]);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setBg((prev) => {
-                const currentIndex = colors.indexOf(prev);
-                const nextIndex = (currentIndex + 1) % colors.length;
-                return colors[nextIndex];
-            });
-        }, 3000);
-
-        return () => clearInterval(interval);
-    }, []);
 
     return (
         <div
-            className={`min-h-screen text-white font-sans transition-all duration-1000 bg-gradient-to-r ${bg}`}
+            className={`min-h-screen text-white font-sans transition-all duration-1000 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600`}
         >
 
             <header className="flex justify-between items-center p-6 bg-white/80 text-gray-900 sticky top-0 z-50 backdrop-blur-md">
