@@ -98,13 +98,13 @@ function App() {
                 <p className="mb-2">
                     GitHub:{" "}
                     <a href="https://github.com/psshrijith" className="text-blue-200 hover:underline">
-                        shrijithps
+                        psshrijith
                     </a>
                 </p>
                 <p>
                     LinkedIn:{" "}
                     <a href="https://www.linkedin.com/in/psshrijith" className="text-blue-200 hover:underline">
-                        shrijithps
+                        psshrijith
                     </a>
                 </p>
             </section>
