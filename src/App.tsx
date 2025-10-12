@@ -74,15 +74,7 @@ function App() {
                         <p className="text-sm mb-2 text-gray-900">
                             A React + Tailwind clone of YouTube UI for practice.
                         </p>
-                        <a href="#" className="text-blue-600 hover:underline">View Project</a>
-                    </div>
-
-                    <div className="p-6 bg-white/20 rounded-xl shadow-md hover:shadow-lg transition backdrop-blur-md">
-                        <h4 className="font-bold text-lg mb-2 text-gray-900">Color Box App</h4>
-                        <p className="text-sm mb-2 text-gray-900">
-                            A React project exploring useState, props, and dynamic styling.
-                        </p>
-                        <a href="#" className="text-blue-600 hover:underline">View Project</a>
+                        <a href="https://github.com/psshrijith/youtubeCloneApp" className="text-blue-600 hover:underline">View Project</a>
                     </div>
                 </div>
             </section>
