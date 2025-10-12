@@ -3,7 +3,7 @@ import { type ReactElement } from "react";
 const ContactDetails = (): ReactElement => {
     return (
         <section id="contact" className="p-10 text-center mb-10">
-            <h3 className="text-3xl font-semibold mb-4 text-white">Contact Me</h3>
+            <h3 className="text-3xl font-semibold mb-4 text-gray-900">Contact Me</h3>
             <p className="mb-2">
                 Email:{" "}
                 <a href="mailto:shrijith89@gmail.com" className="text-blue-200 hover:underline">

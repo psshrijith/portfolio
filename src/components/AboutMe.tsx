@@ -12,7 +12,7 @@ const AboutMe = (): ReactElement =>{
             />
             <h2 className="text-4xl font-bold mb-2">Hi, I'm Shrijith 👋</h2>
             <p className="text-xl max-w-xl">
-                Frontend developer | Ex-QA Engineer | Still learning and building cool projects.
+                Frontend Developer | QA Engineer | Still learning and building cool projects.
             </p>
         </section>
 

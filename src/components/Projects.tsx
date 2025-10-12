@@ -3,7 +3,7 @@ import {type ReactElement} from 'react';
 const Projects=(): ReactElement => {
     return (
     <section id="projects" className="p-10 max-w-5xl mx-auto mb-10">
-        <h3 className="text-3xl font-semibold mb-6 text-center text-white">Projects</h3>
+        <h3 className="text-3xl font-semibold mb-6 text-center text-gray-900">Projects</h3>
         <div className="flex justify-center gap-6">
             <div className="w-80 p-6 bg-white/20 rounded-xl shadow-md hover:shadow-lg transition backdrop-blur-md">
                 <h4 className="font-bold text-lg mb-2 text-gray-900">YouTube Clone</h4>
