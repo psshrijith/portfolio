@@ -22,6 +22,14 @@ const ContactDetails = (): ReactElement => {
                     psshrijith
                 </a>
             </p>
+            <p className="pt-2">
+                Resume:
+                <a href="../../resume.pdf"
+                   download="Shrijith_Resume.pdf"
+                   className="text-blue-200 hover:underline"
+                > Download Resume
+                </a>
+            </p>
         </section>
     )
 }
