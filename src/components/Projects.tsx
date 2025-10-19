@@ -33,7 +33,7 @@ const Projects=(): ReactElement => {
         <div className="flex justify-center gap-6">
             {projectDetails.map((project, index)=>{
                 return(
-                    <div key={index} className="w-80 p-6 bg-white/20 rounded-xl shadow-md hover:shadow-lg transition backdrop-blur-md">
+                    <div key={index} className="w-80 p-6 bg-white/20 rounded-xl shadow-md hover:shadow-lg backdrop-blur-md transition-transform hover:scale-[1.02]">
                         <h4 className="font-bold text-lg mb-2 text-gray-900">{project.title}</h4>
                         <p className="text-sm mb-2 text-gray-900">
                             {project.description}
