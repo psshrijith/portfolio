@@ -30,10 +30,10 @@ const Projects=(): ReactElement => {
     return (
     <section id="projects" className="p-10 max-w-5xl mx-auto mb-10">
         <h3 className="text-3xl font-semibold mb-6 text-center text-gray-900">Projects</h3>
-        <div className="flex justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
             {projectDetails.map((project, index)=>{
                 return(
-                    <div key={index} className="w-80 p-6 bg-white/20 rounded-xl shadow-md hover:shadow-lg backdrop-blur-md transition-transform hover:scale-[1.02]">
+                    <div key={index} className="w-80 p-6 bg-white/20 rounded-xl shadow-md hover:shadow-lg backdrop-blur-md transition-transform hover:scale-[1.02] sm:w-60">
                         <h4 className="font-bold text-lg mb-2 text-gray-900">{project.title}</h4>
                         <p className="text-sm mb-2 text-gray-900">
                             {project.description}
