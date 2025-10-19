@@ -23,7 +23,9 @@ function App() {
 
     return (
         <div
-            className={`min-h-screen text-white font-sans transition-all duration-1000 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600`}
+            className={`min-h-screen text-white font-sans transition-all 
+                        duration-1000 bg-gradient-to-r 
+                        from-blue-400 via-indigo-500 to-purple-600`}
         >
             <Headers/>
             <AboutMe />

@@ -28,7 +28,7 @@ const projectDetails = [
 ]
 const Projects=(): ReactElement => {
     return (
-    <section id="Projects" className="p-10 max-w-5xl mx-auto mb-10">
+    <section id="projects" className="p-10 max-w-5xl mx-auto mb-10">
         <h3 className="text-3xl font-semibold mb-6 text-center text-gray-900">Projects</h3>
         <div className="flex justify-center gap-6">
             {projectDetails.map((project, index)=>{

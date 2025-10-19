@@ -20,7 +20,7 @@ const Headers = (): ReactElement => {
             <h1 className="text-xl font-bold">Shrijith</h1>
             <nav className="space-x-4">
                 {links.map((link)=> (
-                    <a href={`#${link?.link}`} className="hover:text-blue-600" key={link?.link}>{link?.link}</a>
+                    <a href={`#${(link?.link)?.toLowerCase()}`} className="hover:text-blue-600" key={link?.link}>{link?.link}</a>
                 ))}
             </nav>
         </header>

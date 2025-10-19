@@ -21,7 +21,7 @@ const Skills = (): ReactElement => {
     ];
 
     return (
-        <section id="Skills" className="p-10 mb-10">
+        <section id="skills" className="p-10 mb-10">
             <h3 className="text-3xl font-semibold mb-10 text-center text-gray-900">Skills</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
