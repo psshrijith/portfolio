@@ -31,7 +31,7 @@ const ContactDetails = (): ReactElement => {
     ];
 
     return (
-        <section id="contact" className="p-10 text-center mb-10 bg-white/20 rounded-lg backdrop-blur-md max-w-xl mx-auto">
+        <section id="contact" className="p-10 text-center mb-10 bg-white/20 rounded-lg backdrop-blur-md w-md mx-auto">
             <h3 className="text-3xl font-semibold mb-6 text-gray-900">Contact Me</h3>
             <div className="flex flex-col gap-4 items-center">
                 {contacts.map(({ icon, label, value, link, download }) => (
