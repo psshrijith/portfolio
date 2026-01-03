@@ -1,56 +1,89 @@
-import {type ReactElement} from 'react';
+import { type ReactElement, useState } from 'react';
+import { projectDetails } from '../data/projects';
 
-const projectDetails = [
-    {
-        title: "YouTube Clone",
-        description: "A mini YouTube clone built with React, featuring trending videos, a functional search bar, sidebar navigation, and responsive video cards.",
-        image: "",
-        link: "https://github.com/psshrijith/youtubeCloneApp"
-    },
-    {
-        title: "Bankist App",
-        description: "A minimalistic banking application built using vanilla JavaScript to demonstrate key web development concepts like DOM manipulation, event handling, and working with arrays and timers.",
-        image: "",
-        link: "https://github.com/psshrijith/bankist_app"
-    },
-    {
-        title: "CineSearch",
-        description: "A sleek React app that uses the OMDb API to fetch and display detailed movie information. Users can search for any movie title and instantly view its poster, year, and type all in a clean, responsive layout.",
-        image: "",
-        link: "https://github.com/psshrijith/omdbapp"
-    },
-    {
-        title: "Portfolio",
-        description: "My web development journey - projects, experiments, and coding adventures.",
-        image: "",
-        link: "https://github.com/psshrijith/omdbapp"
-    },
-    {
-        title: "CareerConnect",
-        description: "CareerConnect is a full-stack job portal built using React, Express, GraphQL, and PostgreSQL. It supports job creation and job applications, demonstrating real-world frontend–backend communication, GraphQL schema design, and relational database usage. The project is partially completed and was built primarily as a learning exercise in full-stack application architecture.",
-        image: "",
-        link: "https://github.com/psshrijith/careerConnect"
-    }
-]
-const Projects=(): ReactElement => {
+const Projects = (): ReactElement => {
+    const [currentImageIndex, setCurrentImageIndex] = useState<{ [key: number]: number }>({});
+
     return (
-    <section id="projects" className="p-10 max-w-5xl mx-auto mb-10">
-        <h3 className="text-3xl font-semibold mb-6 text-center text-gray-900">Projects</h3>
-        <div className="flex flex-wrap justify-center gap-6">
-            {projectDetails.map((project, index)=>{
-                return(
-                    <div key={index} className="w-80 p-6 bg-white/20 rounded-xl shadow-md hover:shadow-lg backdrop-blur-md transition-transform hover:scale-[1.02] sm:w-60">
-                        <h4 className="font-bold text-lg mb-2 text-gray-900">{project.title}</h4>
-                        <p className="text-sm mb-2 text-gray-900">
-                            {project.description}
-                        </p>
-                        <a href={project.link} className="text-blue-600 hover:underline">View Project</a>
+        <section id="projects" className="p-10 max-w-6xl mx-auto mb-10">
+            <h3 className="text-3xl font-semibold mb-12 text-center text-gray-900">
+                Projects
+            </h3>
+
+            <div className="space-y-16">
+                {projectDetails.map((project, index) => (
+                    <div
+                        key={index}
+                        className={`flex flex-col ${
+                            index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                        } gap-8 items-start`}
+                    >
+                        <div className="flex-1 w-full">
+                            <div className="aspect-video bg-gray-200 overflow-hidden mb-3 rounded-lg">
+                                {project.images.length > 0 ? (
+                                    <img
+                                        src={project.images[currentImageIndex[index] ?? 0]}
+                                        alt={`${project.title} screenshot`}
+                                        className="w-full h-full object-cover"
+                                    />
+                                ) : (
+                                    <div className="w-full h-full flex items-center justify-center">
+                                        <span className="text-gray-400">Screenshot coming soon</span>
+                                    </div>
+                                )}
+                            </div>
+
+                            {project.images.length > 1 && (
+                                <div className="flex gap-2 overflow-x-auto">
+                                    {project.images.map((img, imgIndex) => (
+                                        <button
+                                            key={imgIndex}
+                                            onClick={() =>
+                                                setCurrentImageIndex(prev => ({
+                                                    ...prev,
+                                                    [index]: imgIndex,
+                                                }))
+                                            }
+                                            className={`flex-shrink-0 w-20 h-14 overflow-hidden border-2 transition-all ${
+                                                (currentImageIndex[index] ?? 0) === imgIndex
+                                                    ? 'border-blue-600 scale-105'
+                                                    : 'border-gray-300 hover:border-gray-400'
+                                            }`}
+                                        >
+                                            <img
+                                                src={img}
+                                                alt={`Thumbnail ${imgIndex + 1}`}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="flex-1">
+                            <h4 className="font-bold text-2xl mb-3 text-gray-900">
+                                {project.title}
+                            </h4>
+
+                            <p className="text-gray-600 mb-4 leading-relaxed">
+                                {project.description}
+                            </p>
+
+                            <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block px-6 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                            >
+                                View Project
+                            </a>
+                        </div>
                     </div>
-                )
-            })}
-        </div>
-    </section>
-    )
-}
+                ))}
+            </div>
+        </section>
+    );
+};
 
 export default Projects;
