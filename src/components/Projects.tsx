@@ -24,6 +24,12 @@ const projectDetails = [
         description: "My web development journey - projects, experiments, and coding adventures.",
         image: "",
         link: "https://github.com/psshrijith/omdbapp"
+    },
+    {
+        title: "CareerConnect",
+        description: "CareerConnect is a full-stack job portal built using React, Express, GraphQL, and PostgreSQL. It supports job creation and job applications, demonstrating real-world frontend–backend communication, GraphQL schema design, and relational database usage. The project is partially completed and was built primarily as a learning exercise in full-stack application architecture.",
+        image: "",
+        link: "https://github.com/psshrijith/careerConnect"
     }
 ]
 const Projects=(): ReactElement => {
