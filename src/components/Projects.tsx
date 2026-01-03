@@ -1,5 +1,8 @@
 import { type ReactElement, useState } from 'react';
 import { projectDetails } from '../data/projects';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCode } from '@fortawesome/free-solid-svg-icons';
+
 
 const Projects = (): ReactElement => {
     const [currentImageIndex, setCurrentImageIndex] = useState<{ [key: number]: number }>({});
@@ -27,8 +30,23 @@ const Projects = (): ReactElement => {
                                         className="w-full h-full object-cover"
                                     />
                                 ) : (
-                                    <div className="w-full h-full flex items-center justify-center">
-                                        <span className="text-gray-400">Screenshot coming soon</span>
+                                    <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden mb-3 rounded-lg flex items-center justify-center">
+                                        <div className="text-center px-6">
+                                            <div className="mb-3 text-gray-500">
+                                                <FontAwesomeIcon
+                                                    icon={faCode}
+                                                    className="text-5xl"
+                                                />
+                                            </div>
+
+                                            <p className="text-gray-700 font-semibold">
+                                                {project.title}
+                                            </p>
+
+                                            <p className="text-sm text-gray-500 mt-1">
+                                                Live preview not available
+                                            </p>
+                                        </div>
                                     </div>
                                 )}
                             </div>
