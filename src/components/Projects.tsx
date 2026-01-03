@@ -1,7 +1,6 @@
 import { type ReactElement, useState } from 'react';
 import { projectDetails } from '../data/projects';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode } from '@fortawesome/free-solid-svg-icons';
+import {FaCode} from 'react-icons/fa'
 
 
 const Projects = (): ReactElement => {
@@ -32,11 +31,8 @@ const Projects = (): ReactElement => {
                                 ) : (
                                     <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden mb-3 rounded-lg flex items-center justify-center">
                                         <div className="text-center px-6">
-                                            <div className="mb-3 text-gray-500">
-                                                <FontAwesomeIcon
-                                                    icon={faCode}
-                                                    className="text-5xl"
-                                                />
+                                            <div className="flex items-center mb-3 text-gray-500 justify-center text-4xl">
+                                                <FaCode/>
                                             </div>
 
                                             <p className="text-gray-700 font-semibold">

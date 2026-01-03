@@ -1,51 +1,46 @@
 import { type ReactElement } from "react";
+import { aboutMe } from "../data/about";
 import profilePic from "../assets/shrijith.jpg";
 
-const AboutMe = (): ReactElement => {
-
-    const aboutMe = [
-        {
-            title: "My Journey",
-            description: "I didn’t start as a coding enthusiast. In my first year of engineering, programming felt intimidating and uninteresting. But curiosity and a desire to solve real problems pushed me to keep learning."
-        },
-        {
-            title: "Finding My Path",
-            description: "I discovered my footing in QA and automation testing. Learning tools like Selenium, Cypress, and Playwright not only strengthened my problem-solving skills but also taught me the importance of precision and patience."
-        },
-        {
-            title: "Exploring New Horizons",
-            description: "Currently, I’m diving into frontend development, experimenting with React and Tailwind CSS. Each project, no matter how small, teaches me something new and keeps me moving forward."
-        },
-        {
-            title: "The Takeaway",
-            description: "From early struggles to mastering QA and venturing into frontend development, my journey has been one of resilience, curiosity, and continuous growth. I believe learning never stops, and every challenge is an opportunity to get better."
-        }
-    ];
-
-    return (
+const AboutMe = (): ReactElement => (
         <>
             <section className="flex flex-col items-center justify-center text-center py-20">
                 <img
                     src={profilePic}
                     alt="Shrijith"
-                    className="w-40 h-40 rounded-full border-4 border-white mb-6 object-cover"
+                    className="w-40 h-40 rounded-full border-4 border-white mb-6 object-cover shadow-lg"
                 />
                 <h2 className="text-4xl font-bold mb-2">Hi, I'm Shrijith 👋</h2>
-                <p className="text-xl max-w-xl">
+                <p className="text-lg max-w-xl text-gray-700">
                     Frontend Developer | QA Engineer | Always learning and building meaningful projects.
                 </p>
             </section>
 
-            <section id="about" className="p-10 max-w-3xl mx-auto bg-white/20 rounded-lg backdrop-blur-md mb-10">
-                <h3 className="text-3xl font-semibold mb-4 text-gray-900">About Me</h3>
-                {aboutMe.map(({ title, description }) => (
-                    <p key={title} className="mb-4 text-gray-900">
-                        {description}
-                    </p>
-                ))}
+            <section id="about" className="p-10 max-w-4xl mx-auto mb-10">
+                <h3 className="text-3xl font-semibold mb-10 text-center text-gray-900">My Story</h3>
+
+                <div className="relative">
+                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 -translate-x-1/2"></div>
+
+                    {aboutMe.map((item, index) => (
+                        <div key={item.title} className={`relative flex items-center mb-12 ${
+                            index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                        }`}>
+                            <div className={`md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
+                                <h4 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h4>
+                                <p className="text-gray-700 leading-relaxed">{item.description}</p>
+                            </div>
+
+                            <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-blue-600 rounded-full items-center justify-center text-2xl shadow-lg z-10">
+                                {item.icon}
+                            </div>
+
+                            <div className="md:w-5/12"></div>
+                        </div>
+                    ))}
+                </div>
             </section>
         </>
-    );
-};
+);
 
 export default AboutMe;
