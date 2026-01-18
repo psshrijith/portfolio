@@ -23,7 +23,7 @@ export const projectDetails = [
         title: "Portfolio",
         description: "My web development journey - projects, experiments, and coding adventures.",
         images: [],
-        link: "https://github.com/psshrijith/omdbapp"
+        link: "https://github.com/psshrijith/portfolio"
     },
     {
         title: "CareerConnect",
