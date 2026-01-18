@@ -7,7 +7,7 @@ const AboutMe = (): ReactElement => (
             <section className="flex flex-col items-center justify-center text-center py-20">
                 <img
                     src={profilePic}
-                    alt="Shrijith"
+                    alt="PS Shrijith"
                     className="w-40 h-40 rounded-full border-4 border-white mb-6 object-cover shadow-lg"
                 />
                 <h2 className="text-4xl font-bold mb-2">Hi, I'm Shrijith 👋</h2>
