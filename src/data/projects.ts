@@ -29,6 +29,6 @@ export const projectDetails = [
         title: "CareerConnect",
         description: "CareerConnect is a full-stack job portal built using React, Express, GraphQL, and PostgreSQL. It supports job creation and job applications, demonstrating real-world frontend–backend communication, GraphQL schema design, and relational database usage. The project is partially completed and was built primarily as a learning exercise in full-stack application architecture.",
         images: [careerConnectImage],
-        link: "https://github.com/psshrijith/careerConnect"
+        link: "https://github.com/Praveen-Anirudhan/careerconnect"
     }
 ]
