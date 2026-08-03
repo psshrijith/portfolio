@@ -38,30 +38,6 @@ const ContactDetails = (): ReactElement => {
         },
     ];
 
-    const container = {
-        hidden: {},
-        show: {
-            transition: {
-                staggerChildren: 0.12,
-            },
-        },
-    };
-
-    const item = {
-        hidden: {
-            opacity: 0,
-            y: 30,
-        },
-        show: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut",
-            },
-        },
-    };
-
     return (
         <section id="contact" className="section-shell py-2 sm:py-4">
             <div className="surface-panel p-6 sm:p-8 lg:p-10">
@@ -79,41 +55,36 @@ const ContactDetails = (): ReactElement => {
                     </p>
                 </div>
 
-                <motion.div
-                    variants={container}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4"
-                >
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
                     {contacts.map(
-                        ({
-                            icon,
-                            labelId,
-                            value,
-                            valueId,
-                            link,
-                            download,
-                        }) => (
+                        (
+                            {
+                                icon,
+                                labelId,
+                                value,
+                                valueId,
+                                link,
+                                download,
+                            },
+                            index
+                        ) => (
                             <motion.a
                                 key={labelId}
-                                variants={item}
-                                whileHover={{ y: -8 }}
-                                whileTap={{ scale: 0.98 }}
                                 href={link}
-                                {...(download
-                                    ? { download: "Shrijith_Resume.pdf" }
-                                    : {})}
-                                target={
-                                    link.startsWith("http")
-                                        ? "_blank"
-                                        : "_self"
-                                }
-                                rel={
-                                    link.startsWith("http")
-                                        ? "noopener noreferrer"
-                                        : undefined
-                                }
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: index * 0.1,
+                                }}
+                                whileHover={{
+                                    y: -8,
+                                    scale: 1.02,
+                                }}
+                                whileTap={{
+                                    scale: 0.98,
+                                }}
                                 className="
                                     group
                                     relative
@@ -128,27 +99,56 @@ const ContactDetails = (): ReactElement => {
                                     hover:border-[color:var(--accent)]
                                     hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]
                                 "
+                                {...(download
+                                    ? { download: "Shrijith_Resume.pdf" }
+                                    : {})}
+                                target={
+                                    link.startsWith("http")
+                                        ? "_blank"
+                                        : "_self"
+                                }
+                                rel={
+                                    link.startsWith("http")
+                                        ? "noopener noreferrer"
+                                        : undefined
+                                }
                             >
-                                {/* Animated top border */}
+                                {/* Animated top line */}
                                 <div className="absolute left-0 top-0 h-1 w-0 bg-[color:var(--accent)] transition-all duration-300 group-hover:w-full" />
 
-                                {/* Soft gradient glow */}
+                                {/* Background glow */}
                                 <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                                     <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[color:var(--accent-soft)] blur-3xl" />
                                 </div>
 
                                 <div className="relative flex flex-col gap-5">
                                     {/* Icon */}
-                                    <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-[color:var(--accent-soft)] text-[color:var(--accent)] transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-                                        <div className="absolute inset-0 rounded-2xl bg-[color:var(--accent)] opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-20" />
+                                    <motion.div
+                                        whileHover={{
+                                            scale: 1.1,
+                                            rotate: 5,
+                                        }}
+                                        className="
+                                            relative
+                                            flex
+                                            h-14
+                                            w-14
+                                            items-center
+                                            justify-center
+                                            rounded-2xl
+                                            bg-[color:var(--accent-soft)]
+                                            text-[color:var(--accent)]
+                                        "
+                                    >
+                                        <div className="absolute inset-0 rounded-2xl bg-[color:var(--accent)] opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-25" />
 
                                         <div className="relative">
                                             {icon}
                                         </div>
-                                    </div>
+                                    </motion.div>
 
                                     {/* Content */}
-                                    <div className="transition-all duration-300 group-hover:-translate-y-1">
+                                    <div className="transition-transform duration-300 group-hover:-translate-y-1">
                                         <h3 className="text-lg font-semibold text-[color:var(--text)]">
                                             <FormattedMessage id={labelId} />
                                         </h3>
@@ -168,9 +168,9 @@ const ContactDetails = (): ReactElement => {
                                             className="
                                                 text-[color:var(--accent)]
                                                 opacity-0
+                                                -translate-x-2
                                                 transition-all
                                                 duration-300
-                                                translate-x-[-8px]
                                                 group-hover:translate-x-0
                                                 group-hover:opacity-100
                                             "
@@ -180,7 +180,7 @@ const ContactDetails = (): ReactElement => {
                             </motion.a>
                         )
                     )}
-                </motion.div>
+                </div>
             </div>
         </section>
     );
