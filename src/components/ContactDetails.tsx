@@ -1,11 +1,13 @@
 import { type ReactElement } from "react";
 import { FormattedMessage } from "react-intl";
+import { motion } from "framer-motion";
 import {
     FaEnvelope,
     FaGithub,
     FaLinkedin,
     FaFileDownload,
 } from "react-icons/fa";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 const ContactDetails = (): ReactElement => {
     const contacts = [
@@ -36,6 +38,30 @@ const ContactDetails = (): ReactElement => {
         },
     ];
 
+    const container = {
+        hidden: {},
+        show: {
+            transition: {
+                staggerChildren: 0.12,
+            },
+        },
+    };
+
+    const item = {
+        hidden: {
+            opacity: 0,
+            y: 30,
+        },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.5,
+                ease: "easeOut",
+            },
+        },
+    };
+
     return (
         <section id="contact" className="section-shell py-2 sm:py-4">
             <div className="surface-panel p-6 sm:p-8 lg:p-10">
@@ -43,39 +69,118 @@ const ContactDetails = (): ReactElement => {
                     <p className="section-kicker">
                         <FormattedMessage id="contact.kicker" />
                     </p>
+
                     <h2 className="section-title">
                         <FormattedMessage id="contact.title" />
                     </h2>
+
                     <p className="muted-copy text-base leading-8">
                         <FormattedMessage id="contact.description" />
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-                    {contacts.map(({ icon, labelId, value, valueId, link, download }) => (
-                        <a
-                            key={labelId}
-                            href={link}
-                            className="surface-card group flex flex-col items-start gap-4 p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)]"
-                            {...(download ? { download: "Shrijith_Resume.pdf" } : {})}
-                            target={link.startsWith("http") ? "_blank" : "_self"}
-                            rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
-                        >
-                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--accent-soft)] text-[color:var(--accent)] transition-transform group-hover:scale-105">
-                                {icon}
-                            </div>
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4"
+                >
+                    {contacts.map(
+                        ({
+                            icon,
+                            labelId,
+                            value,
+                            valueId,
+                            link,
+                            download,
+                        }) => (
+                            <motion.a
+                                key={labelId}
+                                variants={item}
+                                whileHover={{ y: -8 }}
+                                whileTap={{ scale: 0.98 }}
+                                href={link}
+                                {...(download
+                                    ? { download: "Shrijith_Resume.pdf" }
+                                    : {})}
+                                target={
+                                    link.startsWith("http")
+                                        ? "_blank"
+                                        : "_self"
+                                }
+                                rel={
+                                    link.startsWith("http")
+                                        ? "noopener noreferrer"
+                                        : undefined
+                                }
+                                className="
+                                    group
+                                    relative
+                                    overflow-hidden
+                                    rounded-3xl
+                                    border
+                                    border-transparent
+                                    surface-card
+                                    p-6
+                                    transition-all
+                                    duration-300
+                                    hover:border-[color:var(--accent)]
+                                    hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+                                "
+                            >
+                                {/* Animated top border */}
+                                <div className="absolute left-0 top-0 h-1 w-0 bg-[color:var(--accent)] transition-all duration-300 group-hover:w-full" />
 
-                            <div>
-                                <h3 className="text-lg font-semibold text-[color:var(--text)]">
-                                    <FormattedMessage id={labelId} />
-                                </h3>
-                                <p className="mt-1 break-all text-sm leading-6 muted-copy">
-                                    {valueId ? <FormattedMessage id={valueId} /> : value}
-                                </p>
-                            </div>
-                        </a>
-                    ))}
-                </div>
+                                {/* Soft gradient glow */}
+                                <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                                    <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[color:var(--accent-soft)] blur-3xl" />
+                                </div>
+
+                                <div className="relative flex flex-col gap-5">
+                                    {/* Icon */}
+                                    <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-[color:var(--accent-soft)] text-[color:var(--accent)] transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                                        <div className="absolute inset-0 rounded-2xl bg-[color:var(--accent)] opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-20" />
+
+                                        <div className="relative">
+                                            {icon}
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="transition-all duration-300 group-hover:-translate-y-1">
+                                        <h3 className="text-lg font-semibold text-[color:var(--text)]">
+                                            <FormattedMessage id={labelId} />
+                                        </h3>
+
+                                        <p className="mt-2 break-all text-sm leading-6 muted-copy">
+                                            {valueId ? (
+                                                <FormattedMessage id={valueId} />
+                                            ) : (
+                                                value
+                                            )}
+                                        </p>
+                                    </div>
+
+                                    {/* Arrow */}
+                                    <div className="flex justify-end">
+                                        <FaArrowUpRightFromSquare
+                                            className="
+                                                text-[color:var(--accent)]
+                                                opacity-0
+                                                transition-all
+                                                duration-300
+                                                translate-x-[-8px]
+                                                group-hover:translate-x-0
+                                                group-hover:opacity-100
+                                            "
+                                        />
+                                    </div>
+                                </div>
+                            </motion.a>
+                        )
+                    )}
+                </motion.div>
             </div>
         </section>
     );
