@@ -1,103 +1,107 @@
+// Projects.tsx
 import { type ReactElement, useState } from 'react';
+import { useIntl } from 'react-intl';
+import { FaCode, FaExternalLinkAlt } from 'react-icons/fa';
 import { projectDetails } from '../data/projects';
-import {FaCode} from 'react-icons/fa'
-
 
 const Projects = (): ReactElement => {
-    const [currentImageIndex, setCurrentImageIndex] = useState<{ [key: number]: number }>({});
+  const intl = useIntl();
+  const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>({});
+
+  const renderVisual = (projectIndex:number, projectTitle:string, projectImages:string[]) => {
+    const activeImageIndex = currentImageIndex[projectIndex] ?? 0;
+    const hasImages = projectImages.length > 0;
 
     return (
-        <section id="projects" className="p-10 max-w-6xl mx-auto mb-10">
-            <h3 className="text-3xl font-semibold mb-12 text-center text-gray-900">
-                Projects
-            </h3>
-
-            <div className="space-y-16">
-                {projectDetails.map((project, index) => (
-                    <div
-                        key={index}
-                        className={`flex flex-col ${
-                            index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                        } gap-8 items-start`}
-                    >
-                        <div className="flex-1 w-full">
-                            <div className="aspect-video bg-gray-200 overflow-hidden mb-3 rounded-lg">
-                                {project.images.length > 0 ? (
-                                    <img
-                                        src={project.images[currentImageIndex[index] ?? 0]}
-                                        alt={`${project.title} screenshot`}
-                                        className="w-full h-full object-cover"
-                                    />
-                                ) : (
-                                    <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden mb-3 rounded-lg flex items-center justify-center">
-                                        <div className="text-center px-6">
-                                            <div className="flex items-center mb-3 text-gray-500 justify-center text-4xl">
-                                                <FaCode/>
-                                            </div>
-
-                                            <p className="text-gray-700 font-semibold">
-                                                {project.title}
-                                            </p>
-
-                                            <p className="text-sm text-gray-500 mt-1">
-                                                Live preview not available
-                                            </p>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-
-                            {project.images.length > 1 && (
-                                <div className="flex gap-2 overflow-x-auto">
-                                    {project.images.map((img, imgIndex) => (
-                                        <button
-                                            key={imgIndex}
-                                            onClick={() =>
-                                                setCurrentImageIndex(prev => ({
-                                                    ...prev,
-                                                    [index]: imgIndex,
-                                                }))
-                                            }
-                                            className={`flex-shrink-0 w-20 h-14 overflow-hidden border-2 transition-all ${
-                                                (currentImageIndex[index] ?? 0) === imgIndex
-                                                    ? 'border-blue-600 scale-105'
-                                                    : 'border-gray-300 hover:border-gray-400'
-                                            }`}
-                                        >
-                                            <img
-                                                src={img}
-                                                alt={`Thumbnail ${imgIndex + 1}`}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="flex-1">
-                            <h4 className="font-bold text-2xl mb-3 text-gray-900">
-                                {project.title}
-                            </h4>
-
-                            <p className="text-gray-600 mb-4 leading-relaxed">
-                                {project.description}
-                            </p>
-
-                            <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block px-6 py-2 bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                            >
-                                View Project
-                            </a>
-                        </div>
-                    </div>
-                ))}
+      <div className="space-y-3">
+        <div className="overflow-hidden rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)]">
+          {hasImages ? (
+            <img
+              src={projectImages[activeImageIndex]}
+              alt={`${projectTitle} screenshot`}
+              className="aspect-[16/10] w-full object-cover"
+            />
+          ) : (
+            <div className="flex aspect-[16/10] items-center justify-center px-6 text-center">
+              <div>
+                <div className="mb-4 flex justify-center text-4xl text-[color:var(--accent)]"><FaCode /></div>
+                <p className="text-lg font-semibold">{projectTitle}</p>
+                <p className="mt-2 text-sm muted-copy">
+                  {intl.formatMessage({ id: 'projects.emptyPreview' })}
+                </p>
+              </div>
             </div>
-        </section>
+          )}
+        </div>
+
+        {projectImages.length > 1 && (
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {projectImages.map((img, imgIndex) => (
+              <button
+                key={imgIndex}
+                type="button"
+                onClick={() =>
+                  setCurrentImageIndex(prev => ({ ...prev, [projectIndex]: imgIndex }))
+                }
+                className={`h-16 w-24 flex-shrink-0 overflow-hidden rounded-xl border-2 ${
+                  activeImageIndex === imgIndex
+                    ? 'border-[color:var(--accent)]'
+                    : 'border-[color:var(--border)]'
+                }`}
+              >
+                <img src={img} alt={`${projectTitle} thumbnail ${imgIndex + 1}`} className="h-full w-full object-cover" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     );
+  };
+
+  return (
+    <section id="projects" className="section-shell py-2 sm:py-4">
+      <div className="surface-panel p-6 sm:p-8 lg:p-10">
+        <div className="mb-8 max-w-3xl space-y-3">
+          <p className="section-kicker">{intl.formatMessage({ id: 'projects.kicker' })}</p>
+          <h2 className="section-title">{intl.formatMessage({ id: 'projects.title' })}</h2>
+          <p className="muted-copy text-base leading-8">
+            {intl.formatMessage({ id: 'projects.description' })}
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {projectDetails.map((project, index) => {
+            const projectTitle = intl.formatMessage({ id: project.titleId });
+            const projectDescription = intl.formatMessage({ id: project.descriptionId });
+
+            return (
+              <article
+                key={project.titleId}
+                className="surface-card overflow-hidden border border-[color:var(--border)] p-4 transition-all duration-200 hover:-translate-y-1"
+              >
+                {renderVisual(index, projectTitle, project.images)}
+
+                <div className="mt-5 space-y-4">
+                  <h3 className="text-xl font-semibold">{projectTitle}</h3>
+                  <p className="text-sm leading-7 muted-copy">{projectDescription}</p>
+
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="soft-button px-4 py-2 text-sm font-semibold inline-flex items-center gap-2"
+                  >
+                    {intl.formatMessage({ id: 'projects.cta' })}
+                    <FaExternalLinkAlt className="text-xs" />
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Projects;

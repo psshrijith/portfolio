@@ -1,46 +1,108 @@
 import { type ReactElement } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import { aboutMe } from "../data/about";
 import profilePic from "../assets/shrijith.jpg";
 
-const AboutMe = (): ReactElement => (
-        <>
-            <section className="flex flex-col items-center justify-center text-center py-20">
-                <img
-                    src={profilePic}
-                    alt="PS Shrijith"
-                    className="w-40 h-40 rounded-full border-4 border-white mb-6 object-cover shadow-lg"
-                />
-                <h2 className="text-4xl font-bold mb-2">Hi, I'm Shrijith 👋</h2>
-                <p className="text-lg max-w-xl text-gray-700">
-                    Frontend Developer | QA Engineer | Always learning and building meaningful projects.
-                </p>
-            </section>
+const focusPoints = [
+    "about.focusPoint.one",
+    "about.focusPoint.two",
+    "about.focusPoint.three",
+];
 
-            <section id="about" className="p-10 max-w-4xl mx-auto mb-10">
-                <h3 className="text-3xl font-semibold mb-10 text-center text-gray-900">My Story</h3>
+const AboutMe = (): ReactElement => {
+    const intl = useIntl();
 
-                <div className="relative">
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 -translate-x-1/2"></div>
+    return (
+    <section id="about" className="section-shell py-2 sm:py-4">
+        <div className="surface-panel overflow-hidden">
+            <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[320px,1fr] lg:p-10">
+                <div className="flex flex-col items-start">
+                    <div className="relative">
+                        <div className="absolute inset-0 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(29,78,216,0.24),transparent_68%)]" />
+                        <img
+                            src={profilePic}
+                            alt={intl.formatMessage({ id: 'about.profile.alt' })}
+                            className="h-52 w-52 rounded-[2rem] border border-[color:var(--border)] object-cover shadow-2xl shadow-slate-900/10 sm:h-60 sm:w-60"
+                        />
+                    </div>
 
-                    {aboutMe.map((item, index) => (
-                        <div key={item.title} className={`relative flex items-center mb-12 ${
-                            index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                        }`}>
-                            <div className={`md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
-                                <h4 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h4>
-                                <p className="text-gray-700 leading-relaxed">{item.description}</p>
-                            </div>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                        {focusPoints.map((pointId) => (
+                            <span
+                                key={pointId}
+                                className="rounded-full border border-[color:var(--border)] bg-[color:var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[color:var(--accent)]"
+                            >
+                                {intl.formatMessage({ id: pointId })}
+                            </span>
+                        ))}
+                    </div>
+                </div>
 
-                            <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-blue-600 rounded-full items-center justify-center text-2xl shadow-lg z-10">
+                <div className="space-y-6">
+                    <div className="space-y-3">
+                        <p className="section-kicker">
+                            <FormattedMessage id="about.kicker" />
+                        </p>
+                        <h2 className="section-title max-w-2xl">
+                            <FormattedMessage id="about.title" />
+                        </h2>
+                        <p className="max-w-3xl text-base leading-8 muted-copy">
+                            <FormattedMessage id="about.intro" />
+                        </p>
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-3">
+                        <div className="surface-card p-4">
+                            <p className="text-sm font-semibold text-[color:var(--accent)]">
+                                <FormattedMessage id="about.focus.label" />
+                            </p>
+                            <p className="mt-2 text-sm leading-6 muted-copy">
+                                <FormattedMessage id="about.focus.body" />
+                            </p>
+                        </div>
+                        <div className="surface-card p-4">
+                            <p className="text-sm font-semibold text-[color:var(--accent)]">
+                                <FormattedMessage id="about.strength.label" />
+                            </p>
+                            <p className="mt-2 text-sm leading-6 muted-copy">
+                                <FormattedMessage id="about.strength.body" />
+                            </p>
+                        </div>
+                        <div className="surface-card p-4">
+                            <p className="text-sm font-semibold text-[color:var(--accent)]">
+                                <FormattedMessage id="about.goal.label" />
+                            </p>
+                            <p className="mt-2 text-sm leading-6 muted-copy">
+                                <FormattedMessage id="about.goal.body" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="border-t border-[color:var(--border)] p-6 sm:p-8 lg:p-10">
+                <div className="grid gap-4 md:grid-cols-2">
+                    {aboutMe.map((item) => (
+                        <article
+                            key={item.titleId}
+                            className="surface-card group p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)]"
+                        >
+                            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--accent-soft)] text-2xl">
                                 {item.icon}
                             </div>
-
-                            <div className="md:w-5/12"></div>
-                        </div>
+                            <h3 className="text-lg font-semibold text-[color:var(--text)]">
+                                <FormattedMessage id={item.titleId} />
+                            </h3>
+                            <p className="mt-3 text-sm leading-7 muted-copy">
+                                <FormattedMessage id={item.descriptionId} />
+                            </p>
+                        </article>
                     ))}
                 </div>
-            </section>
-        </>
-);
+            </div>
+        </div>
+    </section>
+    );
+};
 
 export default AboutMe;

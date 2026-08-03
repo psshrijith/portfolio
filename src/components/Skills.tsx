@@ -1,27 +1,42 @@
 import { type ReactElement } from "react";
+import { FormattedMessage } from "react-intl";
 import skillCategories from "../data/skills";
 
 const Skills = (): ReactElement => {
     return (
-        <section id="skills" className="p-10 mb-10">
-            <h3 className="text-3xl font-semibold mb-10 text-center text-gray-900">Skills & Technologies</h3>
+        <section id="skills" className="section-shell py-2 sm:py-4">
+            <div className="surface-panel p-6 sm:p-8 lg:p-10">
+                <div className="mb-8 max-w-3xl space-y-3">
+                    <p className="section-kicker">
+                        <FormattedMessage id="skills.kicker" />
+                    </p>
+                    <h2 className="section-title">
+                        <FormattedMessage id="skills.title" />
+                    </h2>
+                    <p className="muted-copy text-base leading-8">
+                        <FormattedMessage id="skills.description" />
+                    </p>
+                </div>
 
-            <div className="max-w-3xl mx-auto">
-                {skillCategories.map(({ title, skills }, index) => (
-                    <div key={title} className={`py-6 ${index !== skillCategories.length - 1 ? 'border-b border-gray-200' : ''}`}>
-                        <h4 className="text-lg font-semibold mb-4 text-gray-900">
-                            {title}
-                        </h4>
-                        <div className="flex flex-wrap gap-x-6 gap-y-2">
-                            {skills.map((skill) => (
-                                <div key={skill} className="flex items-center gap-2">
-                                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                                    <span className="text-gray-700">{skill}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ))}
+                <div className="grid gap-4 md:grid-cols-2">
+                    {skillCategories.map(({ titleId, skills }) => (
+                        <article key={titleId} className="surface-card p-5">
+                            <h3 className="text-lg font-semibold text-[color:var(--text)]">
+                                <FormattedMessage id={titleId} />
+                            </h3>
+                            <div className="mt-4 flex flex-wrap gap-2">
+                                {skills.map((skill) => (
+                                    <span
+                                        key={skill}
+                                        className="rounded-full border border-[color:var(--border)] bg-[color:var(--surface-strong)] px-3 py-1.5 text-sm font-medium text-[color:var(--text)] shadow-sm"
+                                    >
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </article>
+                    ))}
+                </div>
             </div>
         </section>
     );

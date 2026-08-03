@@ -1,18 +1,18 @@
 const skillCategories = [
     {
-        title: "Frontend",
+        titleId: "skills.frontend.title",
         skills: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Tailwind CSS", "Redux-Saga"],
     },
     {
-        title: "Backend",
+        titleId: "skills.backend.title",
         skills: ["Java", "Python", "GraphQL"],
     },
     {
-        title: "Testing",
+        titleId: "skills.testing.title",
         skills: ["Selenium", "Cypress", "Playwright"],
     },
     {
-        title: "Version Control",
+        titleId: "skills.versionControl.title",
         skills: ["Git", "GitHub"],
     },
 ];

@@ -1,4 +1,5 @@
 import { type ReactElement } from "react";
+import { FormattedMessage } from "react-intl";
 import {
     FaEnvelope,
     FaGithub,
@@ -9,77 +10,72 @@ import {
 const ContactDetails = (): ReactElement => {
     const contacts = [
         {
-            icon: <FaEnvelope className="text-3xl" />,
-            label: "Email",
+            icon: <FaEnvelope className="text-2xl" />,
+            labelId: "contact.email.label",
             value: "shrijithps89@gmail.com",
             link: "mailto:shrijithps89@gmail.com",
-            color: "blue",
         },
         {
-            icon: <FaGithub className="text-3xl" />,
-            label: "GitHub",
+            icon: <FaGithub className="text-2xl" />,
+            labelId: "contact.github.label",
             value: "psshrijith",
             link: "https://github.com/psshrijith",
-            color: "gray",
         },
         {
-            icon: <FaLinkedin className="text-3xl" />,
-            label: "LinkedIn",
+            icon: <FaLinkedin className="text-2xl" />,
+            labelId: "contact.linkedin.label",
             value: "psshrijith",
             link: "https://www.linkedin.com/in/psshrijith",
-            color: "blue",
         },
         {
-            icon: <FaFileDownload className="text-3xl" />,
-            label: "Resume",
-            value: "Download PDF",
+            icon: <FaFileDownload className="text-2xl" />,
+            labelId: "contact.resume.label",
+            valueId: "contact.resume.value",
             link: "/resume.pdf",
             download: true,
-            color: "green",
         },
     ];
 
-    const colorMap: Record<string, string> = {
-        blue: "hover:border-blue-500 hover:bg-blue-50",
-        gray: "hover:border-gray-700 hover:bg-gray-50",
-        green: "hover:border-green-500 hover:bg-green-50",
-    };
-
     return (
-        <section id="contact" className="p-10 mb-10 max-w-5xl mx-auto">
-            <h3 className="text-3xl font-semibold mb-4 text-center text-gray-900">
-                Get In Touch
-            </h3>
+        <section id="contact" className="section-shell py-2 sm:py-4">
+            <div className="surface-panel p-6 sm:p-8 lg:p-10">
+                <div className="mb-8 max-w-3xl space-y-3">
+                    <p className="section-kicker">
+                        <FormattedMessage id="contact.kicker" />
+                    </p>
+                    <h2 className="section-title">
+                        <FormattedMessage id="contact.title" />
+                    </h2>
+                    <p className="muted-copy text-base leading-8">
+                        <FormattedMessage id="contact.description" />
+                    </p>
+                </div>
 
-            <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-                Feel free to reach out for collaborations, opportunities, or just a friendly chat!
-            </p>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    {contacts.map(({ icon, labelId, value, valueId, link, download }) => (
+                        <a
+                            key={labelId}
+                            href={link}
+                            className="surface-card group flex flex-col items-start gap-4 p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)]"
+                            {...(download ? { download: "Shrijith_Resume.pdf" } : {})}
+                            target={link.startsWith("http") ? "_blank" : "_self"}
+                            rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
+                        >
+                            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--accent-soft)] text-[color:var(--accent)] transition-transform group-hover:scale-105">
+                                {icon}
+                            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {contacts.map(({ icon, label, value, link, download, color }) => (
-                    <a
-                        key={label}
-                        href={link}
-                        className={`p-6 border-2 border-gray-200 ${
-                            colorMap[color]
-                        } transition-all text-center group flex flex-col items-center`}
-                        {...(download ? { download: "Shrijith_Resume.pdf" } : {})}
-                        target={link.startsWith("http") ? "_blank" : "_self"}
-                        rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
-                    >
-                        <div className="mb-4 text-gray-700 group-hover:scale-110 transition-transform">
-                            {icon}
-                        </div>
-
-                        <h4 className="font-bold text-lg mb-2 text-gray-900">
-                            {label}
-                        </h4>
-
-                        <p className="text-sm text-gray-600 break-all">
-                            {value}
-                        </p>
-                    </a>
-                ))}
+                            <div>
+                                <h3 className="text-lg font-semibold text-[color:var(--text)]">
+                                    <FormattedMessage id={labelId} />
+                                </h3>
+                                <p className="mt-1 break-all text-sm leading-6 muted-copy">
+                                    {valueId ? <FormattedMessage id={valueId} /> : value}
+                                </p>
+                            </div>
+                        </a>
+                    ))}
+                </div>
             </div>
         </section>
     );

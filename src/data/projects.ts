@@ -2,32 +2,32 @@ import { careerConnectImage, moviesHomePage, moviesGrid } from '../assets';
 
 export const projectDetails = [
     {
-        title: "YouTube Clone",
-        description: "A mini YouTube clone built with React, featuring trending videos, a functional search bar, sidebar navigation, and responsive video cards.",
+        titleId: "projects.youtube.title",
+        descriptionId: "projects.youtube.description",
         images: [],
         link: "https://github.com/psshrijith/youtubeCloneApp"
     },
     {
-        title: "Bankist App",
-        description: "A minimalistic banking application built using vanilla JavaScript to demonstrate key web development concepts like DOM manipulation, event handling, and working with arrays and timers.",
+        titleId: "projects.bankist.title",
+        descriptionId: "projects.bankist.description",
         images: [],
         link: "https://github.com/psshrijith/bankist_app"
     },
     {
-        title: "CineSearch",
-        description: "A sleek React app that uses the OMDb API to fetch and display detailed movie information. Users can search for any movie title and instantly view its poster, year, and type all in a clean, responsive layout.",
+        titleId: "projects.cinesearch.title",
+        descriptionId: "projects.cinesearch.description",
         images: [moviesHomePage, moviesGrid],
         link: "https://github.com/psshrijith/omdbapp"
     },
     {
-        title: "Portfolio",
-        description: "My web development journey - projects, experiments, and coding adventures.",
+        titleId: "projects.portfolio.title",
+        descriptionId: "projects.portfolio.description",
         images: [],
         link: "https://github.com/psshrijith/portfolio"
     },
     {
-        title: "CareerConnect",
-        description: "CareerConnect is a full-stack job portal built using React, Express, GraphQL, and PostgreSQL. It supports job creation and job applications, demonstrating real-world frontend–backend communication, GraphQL schema design, and relational database usage. The project is partially completed and was built primarily as a learning exercise in full-stack application architecture.",
+        titleId: "projects.careerconnect.title",
+        descriptionId: "projects.careerconnect.description",
         images: [careerConnectImage],
         link: "https://github.com/Praveen-Anirudhan/careerconnect"
     }
