@@ -37,6 +37,7 @@ const ContactDetails = (): ReactElement => {
             download: true,
         },
     ];
+    
 
     return (
         <section id="contact" className="section-shell py-2 sm:py-4">
