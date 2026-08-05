@@ -38,7 +38,6 @@ const ContactDetails = (): ReactElement => {
         },
     ];
     
-
     return (
         <section id="contact" className="section-shell py-2 sm:py-4">
             <div className="surface-panel p-6 sm:p-8 lg:p-10">
