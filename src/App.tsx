@@ -11,6 +11,8 @@ type ThemeMode = 'light' | 'dark';
 
 const THEME_STORAGE_KEY = 'portfolio-theme';
 
+const TIMEOUT = 1000;
+
 const playThemeSwitchSound = async (nextTheme: ThemeMode, audioContextRef: MutableRefObject<AudioContext | null>) => {
     if (typeof window === 'undefined') {
         return;
@@ -70,7 +72,7 @@ function App() {
     useEffect(() => {
         const timer = window.setTimeout(() => {
             setIsLoading(false);
-        }, 4500);
+        }, TIMEOUT);
         return () => window.clearTimeout(timer);
     }, []);
 
