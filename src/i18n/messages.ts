@@ -1,6 +1,6 @@
 export const messages = {
   'header.brand.name': 'PS Shrijith',
-  'header.brand.tagline': 'Frontend, QA, and learning in public',
+  'header.brand.tagline': 'Frontend Engineer and QA',
   'header.nav.about': 'About',
   'header.nav.skills': 'Skills',
   'header.nav.projects': 'Projects',

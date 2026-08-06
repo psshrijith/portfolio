@@ -1,42 +1,10 @@
 import { type ReactElement } from "react";
 import { FormattedMessage } from "react-intl";
 import { motion } from "framer-motion";
-import {
-    FaEnvelope,
-    FaGithub,
-    FaLinkedin,
-    FaFileDownload,
-} from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { Contact } from "../data/contact";
 
 const ContactDetails = (): ReactElement => {
-    const contacts = [
-        {
-            icon: <FaEnvelope className="text-2xl" />,
-            labelId: "contact.email.label",
-            value: "shrijithps89@gmail.com",
-            link: "mailto:shrijithps89@gmail.com",
-        },
-        {
-            icon: <FaGithub className="text-2xl" />,
-            labelId: "contact.github.label",
-            value: "psshrijith",
-            link: "https://github.com/psshrijith",
-        },
-        {
-            icon: <FaLinkedin className="text-2xl" />,
-            labelId: "contact.linkedin.label",
-            value: "psshrijith",
-            link: "https://www.linkedin.com/in/psshrijith",
-        },
-        {
-            icon: <FaFileDownload className="text-2xl" />,
-            labelId: "contact.resume.label",
-            valueId: "contact.resume.value",
-            link: "/resume.pdf",
-            download: true,
-        },
-    ];
     
     return (
         <section id="contact" className="section-shell py-2 sm:py-4">
@@ -56,7 +24,7 @@ const ContactDetails = (): ReactElement => {
                 </div>
 
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
-                    {contacts.map(
+                    {Contact.map(
                         (
                             {
                                 icon,
