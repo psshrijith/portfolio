@@ -60,7 +60,6 @@ export const messages = {
 
   'contact.kicker': 'Contact',
   'contact.title': 'Reach out if you want to build, review, or collaborate.',
-  'contact.description': 'The contact section is intentionally direct so the user has a clear next step without needing to hunt for links.',
   'contact.panel.title': 'Let’s talk',
   'contact.panel.body': 'If you want to collaborate, review the code, or just say hello, these are the fastest ways to reach me.',
   'contact.primaryAction': 'Send a message',

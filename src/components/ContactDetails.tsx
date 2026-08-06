@@ -17,10 +17,6 @@ const ContactDetails = (): ReactElement => {
                     <h2 className="section-title">
                         <FormattedMessage id="contact.title" />
                     </h2>
-
-                    <p className="muted-copy text-base leading-8">
-                        <FormattedMessage id="contact.description" />
-                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
